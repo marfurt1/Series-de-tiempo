@@ -47,6 +47,8 @@ def load(filename):
 	object = cPickle.loads(buffer)
 	file.close()
 	return object
+data 
+ 
 
 #= cPickle.load(open(filename, 'rb'))
 predicciones_a=data.fit_predict(data,n_periods=60*24)
