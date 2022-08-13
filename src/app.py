@@ -48,8 +48,8 @@ def load(filename):
 	file.close()
 	return object
 
-load_model_a = cPickle.load(open(filename, 'rb'))
-predicciones_a=load_model_a.fit_predict(data_test_a,n_periods=60*24)
+#= cPickle.load(open(filename, 'rb'))
+predicciones_a=data.fit_predict(data,n_periods=60*24)
 
 print('las predicciones para el próximo día de  test a son: {}'.format(predicciones_a))
 
@@ -64,18 +64,18 @@ def load(filename1):
 	file1 = gzip.GzipFile(filename1, 'rb')
 	buffer = ""
 	while 1:
-		data = file1.read()
-		if data == "":
+		data1 = file1.read()
+		if data1 == "":
 			break
-		buffer += data
+		buffer += data1
 	object = cPickle.loads(buffer)
 	file1.close()
 	return object
 
-load_model_b = cPickle.load(open(filename1, 'rb'))
+#load_model_b = cPickle.load(open(filename1, 'rb'))
 
 # reentreno el modelo con la ventana móvil (historial)
-predicciones_b=load_model_b.fit_predict(data_test_b,n_periods=60*24)
+predicciones_b=data1.fit_predict(data1,n_periods=60*24)
 
 print('las predicciones para el próximo día de  test b son: {}'.format(predicciones_b))
 
