@@ -31,6 +31,22 @@ data_test_b.index = pd.to_datetime(data_test_b.index)
 #filename = '../models/best_model_a.pkl'
 #load_model_a = pickle.load(open(filename, 'rb'))
 
+filename = '../models/best_model_a.pkl'
+def load(filename):
+	"""Loads a compressed object from disk
+	"""
+	file = gzip.GzipFile(filename, 'rb')
+	buffer = ""
+	while 1:
+		data = file.read()
+		if data == "":
+			break
+		buffer += data
+	object = pickle.loads(buffer)
+	file.close()
+	return object
+
+load_model_a = pickle.load(open(filename, 'rb'))
 predicciones_a=load_model_a.fit_predict(data_test_a,n_periods=60*24)
 
 print('las predicciones para el próximo día de  test a son: {}'.format(predicciones_a))
@@ -38,6 +54,23 @@ print('las predicciones para el próximo día de  test a son: {}'.format(predicc
 
 #filename = '../models/best_model_b.pkl'
 #load_model_b = pickle.load(open(filename, 'rb'))
+
+filename1 = '../models/best_model_b.pkl'
+def load(filename1):
+	"""Loads a compressed object from disk
+	"""
+	file1 = gzip.GzipFile(filename1, 'rb')
+	buffer = ""
+	while 1:
+		data = file1.read()
+		if data == "":
+			break
+		buffer += data
+	object = pickle.loads(buffer)
+	file1.close()
+	return object
+
+load_model_b = pickle.load(open(filename1, 'rb'))
 
 # reentreno el modelo con la ventana móvil (historial)
 predicciones_b=load_model_b.fit_predict(data_test_b,n_periods=60*24)
