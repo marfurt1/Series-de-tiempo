@@ -28,16 +28,16 @@ data_test_b.index = pd.to_datetime(data_test_b.index)
 ###############
 
 # load the model from data
-filename = '../models/best_model_a.pkl'
-load_model_a = pickle.load(open(filename, 'rb'))
+#filename = '../models/best_model_a.pkl'
+#load_model_a = pickle.load(open(filename, 'rb'))
 
 predicciones_a=load_model_a.fit_predict(data_test_a,n_periods=60*24)
 
 print('las predicciones para el próximo día de  test a son: {}'.format(predicciones_a))
 
 
-filename = '../models/best_model_b.pkl'
-load_model_b = pickle.load(open(filename, 'rb'))
+#filename = '../models/best_model_b.pkl'
+#load_model_b = pickle.load(open(filename, 'rb'))
 
 # reentreno el modelo con la ventana móvil (historial)
 predicciones_b=load_model_b.fit_predict(data_test_b,n_periods=60*24)
