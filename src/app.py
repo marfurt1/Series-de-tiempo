@@ -47,10 +47,8 @@ def load(filename):
 	object = cPickle.loads(buffer)
 	file.close()
 	return object
-data 
- 
 
-#= cPickle.load(open(filename, 'rb'))
+ 
 predicciones_a=data.fit_predict(data,n_periods=60*24)
 
 print('las predicciones para el próximo día de  test a son: {}'.format(predicciones_a))
@@ -73,8 +71,6 @@ def load(filename1):
 	object = cPickle.loads(buffer)
 	file1.close()
 	return object
-
-#load_model_b = cPickle.load(open(filename1, 'rb'))
 
 # reentreno el modelo con la ventana móvil (historial)
 predicciones_b=data1.fit_predict(data1,n_periods=60*24)
