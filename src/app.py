@@ -14,7 +14,9 @@ import statsmodels.api as sm
 
 from pmdarima.arima import auto_arima
 
-import pickle
+import _pickle as cPickle # Faster than pickle
+#import pickle
+import gzip
 
 # Load datasets
 
